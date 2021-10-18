@@ -50,7 +50,7 @@ fi
 ####
 
 # define aur packages
-aur_packages="clion-jre"
+aur_packages="clion clion-jre"
 
 # build package only, as apacman seems to be having issues finding the clion built
 # package, probably related to the fact that the package version has a colon, so
