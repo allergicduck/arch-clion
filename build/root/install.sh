@@ -39,7 +39,7 @@ fi
 ####
 
 # define pacman packages
-pacman_packages="git tk mono"
+pacman_packages="git tk mono openssh"
 
 # install compiled packages using pacman
 if [[ ! -z "${pacman_packages}" ]]; then
@@ -50,7 +50,7 @@ fi
 ####
 
 # define aur packages
-aur_packages="clion"
+aur_packages="clion-jre"
 
 # build package only, as apacman seems to be having issues finding the clion built
 # package, probably related to the fact that the package version has a colon, so
