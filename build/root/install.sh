@@ -39,7 +39,7 @@ fi
 ####
 
 # define pacman packages
-pacman_packages="git tk mono dotnet-sdk"
+pacman_packages="git tk mono"
 
 # install compiled packages using pacman
 if [[ ! -z "${pacman_packages}" ]]; then
@@ -50,9 +50,9 @@ fi
 ####
 
 # define aur packages
-aur_packages="msbuild-15-bin rider"
+aur_packages="clion"
 
-# build package only, as apacman seems to be having issues finding the rider built
+# build package only, as apacman seems to be having issues finding the clion built
 # package, probably related to the fact that the package version has a colon, so
 # this could be a bug in apacman escaping.
 # due to the above issue we build and then use pacman to install manually (done in aur.sh).
@@ -68,8 +68,8 @@ source aur.sh
 cp /home/nobody/novnc-16x16.png /usr/share/webapps/novnc/app/images/icons/
 
 cat <<'EOF' > /tmp/startcmd_heredoc
-# run rider
-/usr/bin/rider
+# run clion
+/usr/bin/clion
 EOF
 
 # replace startcmd placeholder string with contents of file (here doc)
@@ -83,9 +83,9 @@ rm /tmp/startcmd_heredoc
 ####
 
 cat <<'EOF' > /tmp/menu_heredoc
-    <item label="Rider">
+    <item label="CLion">
     <action name="Execute">
-      <command>/usr/bin/rider</command>
+      <command>/usr/bin/clion</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
@@ -103,24 +103,24 @@ rm /tmp/menu_heredoc
 # env vars
 ####
 
-# set RIDER_PROPERTIES env var, this determines the path to the custom idea.properties file
-# which contains the paths for config, plugins, system and log paths (see config rider section),
+# set CLION_PROPERTIES env var, this determines the path to the custom idea.properties file
+# which contains the paths for config, plugins, system and log paths (see config clion section),
 # which are then defined to point at /config/... for persistence.
 
 cat <<'EOF' > /tmp/envvars_heredoc
-export RIDER_PROPERTIES=$(echo "${RIDER_PROPERTIES}" | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
-if [[ ! -z "${RIDER_PROPERTIES}" ]]; then
-	echo "[info] RIDER_PROPERTIES defined as '${RIDER_PROPERTIES}'" | ts '%Y-%m-%d %H:%M:%.S'
+export CLION_PROPERTIES=$(echo "${CLION_PROPERTIES}" | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
+if [[ ! -z "${CLION_PROPERTIES}" ]]; then
+	echo "[info] CLION_PROPERTIES defined as '${CLION_PROPERTIES}'" | ts '%Y-%m-%d %H:%M:%.S'
 else
-	export RIDER_PROPERTIES="/home/nobody/.config/rider/config/idea.properties"
-	echo "[info] RIDER_PROPERTIES not defined, defaulting to '${RIDER_PROPERTIES}'" | ts '%Y-%m-%d %H:%M:%.S'
+	export CLION_PROPERTIES="/home/nobody/.config/clion/config/idea.properties"
+	echo "[info] CLION_PROPERTIES not defined, defaulting to '${CLION_PROPERTIES}'" | ts '%Y-%m-%d %H:%M:%.S'
 fi
 
-export RIDER_VM_OPTIONS=$(echo "${RIDER_VM_OPTIONS}" | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
-if [[ ! -z "${RIDER_VM_OPTIONS}" ]]; then
-	echo "[info] RIDER_VM_OPTIONS defined as '${RIDER_VM_OPTIONS}'" | ts '%Y-%m-%d %H:%M:%.S'
+export CLION_VM_OPTIONS=$(echo "${CLION_VM_OPTIONS}" | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
+if [[ ! -z "${CLION_VM_OPTIONS}" ]]; then
+	echo "[info] CLION_VM_OPTIONS defined as '${CLION_VM_OPTIONS}'" | ts '%Y-%m-%d %H:%M:%.S'
 else
-	echo "[info] RIDER_VM_OPTIONS not defined, skipping additional options'" | ts '%Y-%m-%d %H:%M:%.S'
+	echo "[info] CLION_VM_OPTIONS not defined, skipping additional options'" | ts '%Y-%m-%d %H:%M:%.S'
 fi
 EOF
 
@@ -135,7 +135,7 @@ rm /tmp/envvars_heredoc
 ####
 
 # define comma separated list of paths
-install_paths="/tmp,/usr/share/themes,/home/nobody,/usr/share/webapps/novnc,/usr/share/applications,/usr/share/licenses,/etc/xdg,/usr/share/rider"
+install_paths="/tmp,/usr/share/themes,/home/nobody,/usr/share/webapps/novnc,/usr/share/applications,/usr/share/licenses,/etc/xdg,/usr/share/clion"
 
 # split comma separated string into list for install paths
 IFS=',' read -ra install_paths_list <<< "${install_paths}"

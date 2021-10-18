@@ -1,14 +1,14 @@
 **Application**
 
-[Rider](https://www.jetbrains.com/rider/)
+[CLion](https://www.jetbrains.com/clion/)
 
 **Description**
 
-JetBrains Rider is a cross-platform .NET IDE based on the IntelliJ platform and ReSharper. Rider supports .NET Framework, the new cross-platform .NET Core, and Mono based projects. This lets you develop a wide range of applications including .NET desktop applications, services and libraries, Unity games, Xamarin apps, ASP.NET and ASP.NET Core web applications.
+JetBrains CLion is a cross-platform .NET IDE based on the IntelliJ platform and ReSharper. CLion supports .NET Framework, the new cross-platform .NET Core, and Mono based projects. This lets you develop a wide range of applications including .NET desktop applications, services and libraries, Unity games, Xamarin apps, ASP.NET and ASP.NET Core web applications.
 
 **Build notes**
 
-Latest stable Rider release from Arch Linux.
+Latest stable CLion release from Arch Linux.
 
 Note:- This application requires a license, otherwise it will run in Evaluation Mode for 30 days.
 
@@ -21,14 +21,14 @@ docker run -d \
     -v <path for config files>:/config \
     -v <path for data files>:/data \
     -v /etc/localtime:/etc/localtime:ro \
-    -e RIDER_PROPERTIES=<optional path to idea.properties file> \
-    -e RIDER_VM_OPTIONS=<optional additional jvm options > \
+    -e CLION_PROPERTIES=<optional path to idea.properties file> \
+    -e CLION_VM_OPTIONS=<optional additional jvm options > \
     -e WEBPAGE_TITLE=<name shown in browser tab> \
     -e VNC_PASSWORD=<password for web ui> \
     -e UMASK=<umask for created files> \
     -e PUID=<uid for user> \
     -e PGID=<gid for user> \
-    binhex/arch-rider
+    binhex/arch-clion
 ```
 
 Please replace all user variables in the above command defined by <> with the correct values.
@@ -38,16 +38,16 @@ Please replace all user variables in the above command defined by <> with the co
 docker run -d \
     -p 5900:5900 \
     -p 6080:6080 \
-    --name=rider \
-    -v /apps/docker/rider:/config \
-    -v /apps/docker/rider/projects:/data \
+    --name=clion \
+    -v /apps/docker/clion:/config \
+    -v /apps/docker/clion/projects:/data \
     -v /etc/localtime:/etc/localtime:ro \
-    -e WEBPAGE_TITLE=Rider \
+    -e WEBPAGE_TITLE=CLion \
     -e VNC_PASSWORD=mypassword \
     -e UMASK=000 \
     -e PUID=0 \
     -e PGID=0 \
-    binhex/arch-rider
+    binhex/arch-clion
 ```
 
 **Access via web interface (noVNC)**
@@ -78,4 +78,4 @@ If you appreciate my work, then please consider buying me a beer  :D
 
 [![PayPal donation](https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MM5E27UX6AUU4)
 
-[Documentation](https://github.com/binhex/documentation) | [Support forum](https://forums.unraid.net/topic/76727-support-binhex-rider/)
+[Documentation](https://github.com/binhex/documentation) | [Support forum](https://forums.unraid.net/topic/76727-support-binhex-clion/)
